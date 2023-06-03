@@ -1,0 +1,55 @@
+﻿<Window x:Class="OmegaApp.WinStaffAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OmegaApp"
+        mc:Ignorable="d"
+        Title="WinAdd" Height="500" Width="500">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF0E88D3"/>
+                <GradientStop Color="AliceBlue" Offset="1.4"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="5" Grid.ColumnSpan="2" Grid.Column="0" Orientation="Vertical">
+            <Image Source="Pictures/BhsLogo.png" Width="200" />
+        </StackPanel>
+
+        <StackPanel Margin="5">
+            <TextBlock Margin="0 60 0 0" Text="А" FontSize="20" Foreground="Transparent"/>
+            <TextBlock Margin="5 8" Text="Фамилия" FontSize="20" />
+            <TextBlock Margin="5 8" Text="Имя" FontSize="20" />
+            <TextBlock Margin="5 8" Text="Отчество" FontSize="20" />
+            <TextBlock Margin="5 8" Text="Отдел" FontSize="20" />
+            <TextBlock Margin="5 8" Text="Телефон" FontSize="20" />
+            <TextBlock Margin="5 8" Text="Логин" FontSize="20" />
+            <TextBlock Margin="5 8" Text="Пароль" FontSize="20" />
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Margin="5">
+            <TextBlock Margin="0 80 0 0" />
+            
+            <TextBox  Name="tbx_LastName"  Text="{Binding LastName}" Width="280" Margin="0 0 0 15" Height="28" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Left" BorderBrush="#FF817A7A" BorderThickness="1" Background="Transparent" FontSize="15" />
+            <TextBox  Name="tbx_FirstName" Text="{Binding FirstName}" Width="280" Margin="0 0 0 15" Height="28" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Left" BorderBrush="#FF817A7A" BorderThickness="1" Background="Transparent" FontSize="15" />
+            <TextBox  Name="tbx_Patronym"  Text="{Binding Patronymic}" Width="280" Margin="0 0 0 15" Height="28" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Left" BorderBrush="#FF817A7A" BorderThickness="1" Background="Transparent" FontSize="15" />
+
+            <ComboBox Name="Cmb_DepartMent" SelectedValuePath="ID_Depart" DisplayMemberPath="DepartName"
+                      SelectedValue="{Binding DepartName}" Margin="0 0 0 15" Width="280" Height="25" FontSize="15" />
+
+            <TextBox  Name="tbx_phone"    Text="{Binding Phone}" Width="280" Margin="0 0 0 15" Height="28" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Left" BorderBrush="#FF817A7A" BorderThickness="1" Background="Transparent" FontSize="15" />
+            <TextBox  Name="tbx_login"    Text="{Binding NameUser}" Width="280" Margin="0 0 0 15" Height="28" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Left" BorderBrush="#FF817A7A" BorderThickness="1" Background="Transparent" FontSize="15" />
+            <TextBox  Name="tbx_password" Text="{Binding Passwordss}" Width="280" Margin="0 0 0 15" Height="28" TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Left" BorderBrush="#FF817A7A" BorderThickness="1" Background="Transparent" FontSize="15" />
+
+            <Button Height="30" Width="120" Content="Сохранить"  Background="#FF4AB2F1" Name="btn_Save"  
+                    FontSize="12" FontWeight="DemiBold"  Margin="0 25" Click="btn_Save_Click"/>
+            
+        </StackPanel>
+    </Grid>
+</Window>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0fdd6d6359694b968f4aa61703786787" Name="Diagram1">
+        <EntityTypeShape EntityType="ApplicationOmegaModel.Applications" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.Corpus" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.Department" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.DepartStaff" Width="1.5" PointX="7.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.Guest" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.GuestRoom" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.Post" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.Quarter" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.Room" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.Staff" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.StatusApp" Width="1.5" PointX="7.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.StreetCorpus" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ApplicationOmegaModel.Users" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="ApplicationOmegaModel.FK__Applicati__ID_De__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="ApplicationOmegaModel.FK__Applicati__ID_Gu__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="ApplicationOmegaModel.FK__Applicati__ID_St__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="ApplicationOmegaModel.FK__Corpus__ID_Quart__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="ApplicationOmegaModel.FK__Corpus__ID_Stree__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="ApplicationOmegaModel.FK__Room__ID_Corpus__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="ApplicationOmegaModel.FK__DepartSta__ID_De__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="ApplicationOmegaModel.FK__DepartSta__ID_St__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ApplicationOmegaModel.FK__GuestRoom__ID_Gu__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="ApplicationOmegaModel.FK__GuestRoom__ID_Ro__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="ApplicationOmegaModel.FK__Staff__ID_Post__48CFD27E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,843 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище ApplicationOmegaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="ID_Application" />
+          </Key>
+          <Property Name="ID_Application" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Theme" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ID_GuestRoom" Type="int" Nullable="false" />
+          <Property Name="ID_DepartStaff" Type="int" />
+          <Property Name="ID_Status" Type="int" Nullable="false" />
+          <Property Name="DateStart" Type="datetime" Nullable="false" />
+          <Property Name="DateEnding" Type="datetime" />
+          <Property Name="Remark" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Corpus">
+          <Key>
+            <PropertyRef Name="ID_Corpus" />
+          </Key>
+          <Property Name="ID_Corpus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Quarter" Type="int" Nullable="false" />
+          <Property Name="CorpusNum" Type="int" Nullable="false" />
+          <Property Name="ID_StreetCorpus" Type="int" Nullable="false" />
+          <Property Name="StreetNum" Type="varchar" MaxLength="5" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID_Depart" />
+          </Key>
+          <Property Name="ID_Depart" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartName" Type="varchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DepartStaff">
+          <Key>
+            <PropertyRef Name="ID_DepartStaff" />
+          </Key>
+          <Property Name="ID_DepartStaff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Depart" Type="int" Nullable="false" />
+          <Property Name="ID_Staff" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="ID_Guest" />
+          </Key>
+          <Property Name="ID_Guest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Patronymic" Type="varchar" MaxLength="75" />
+          <Property Name="Telephone" Type="varchar" MaxLength="25" />
+          <Property Name="Email" Type="varchar" MaxLength="75" />
+        </EntityType>
+        <EntityType Name="GuestRoom">
+          <Key>
+            <PropertyRef Name="ID_GuestRoom" />
+          </Key>
+          <Property Name="ID_GuestRoom" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Room" Type="int" Nullable="false" />
+          <Property Name="ID_Guest" Type="int" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID_Post" />
+          </Key>
+          <Property Name="ID_Post" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostName" Type="varchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Quarter">
+          <Key>
+            <PropertyRef Name="ID_Quarter" />
+          </Key>
+          <Property Name="ID_Quarter" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuarterName" Type="varchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="ID_Room" />
+          </Key>
+          <Property Name="ID_Room" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Corpus" Type="int" Nullable="false" />
+          <Property Name="RoomNum" Type="int" Nullable="false" />
+          <Property Name="Entrance" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="ID_Staff" />
+          </Key>
+          <Property Name="ID_Staff" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="75" Nullable="false" />
+          <Property Name="Patronymic" Type="varchar" MaxLength="75" />
+          <Property Name="Phone" Type="varchar" MaxLength="75" />
+          <Property Name="ID_Post" Type="int" />
+          <Property Name="NameUser" Type="varchar" MaxLength="60" />
+          <Property Name="Passwordss" Type="varchar" MaxLength="50" />
+          <Property Name="IsAdmin" Type="bit" />
+        </EntityType>
+        <EntityType Name="StatusApp">
+          <Key>
+            <PropertyRef Name="ID_Status" />
+          </Key>
+          <Property Name="ID_Status" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StreetCorpus">
+          <Key>
+            <PropertyRef Name="ID_StreetCorpus" />
+          </Key>
+          <Property Name="ID_StreetCorpus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StreetName" Type="varchar" MaxLength="75" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Passwords" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Applicati__ID_De__5441852A">
+          <End Role="DepartStaff" Type="Self.DepartStaff" Multiplicity="0..1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartStaff">
+              <PropertyRef Name="ID_DepartStaff" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="ID_DepartStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Applicati__ID_Gu__534D60F1">
+          <End Role="GuestRoom" Type="Self.GuestRoom" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GuestRoom">
+              <PropertyRef Name="ID_GuestRoom" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="ID_GuestRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Applicati__ID_St__5535A963">
+          <End Role="StatusApp" Type="Self.StatusApp" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusApp">
+              <PropertyRef Name="ID_Status" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="ID_Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Corpus__ID_Quart__3A81B327">
+          <End Role="Quarter" Type="Self.Quarter" Multiplicity="1" />
+          <End Role="Corpus" Type="Self.Corpus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quarter">
+              <PropertyRef Name="ID_Quarter" />
+            </Principal>
+            <Dependent Role="Corpus">
+              <PropertyRef Name="ID_Quarter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Corpus__ID_Stree__3B75D760">
+          <End Role="StreetCorpus" Type="Self.StreetCorpus" Multiplicity="1" />
+          <End Role="Corpus" Type="Self.Corpus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StreetCorpus">
+              <PropertyRef Name="ID_StreetCorpus" />
+            </Principal>
+            <Dependent Role="Corpus">
+              <PropertyRef Name="ID_StreetCorpus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DepartSta__ID_De__4D94879B">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="DepartStaff" Type="Self.DepartStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID_Depart" />
+            </Principal>
+            <Dependent Role="DepartStaff">
+              <PropertyRef Name="ID_Depart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DepartSta__ID_St__4E88ABD4">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="DepartStaff" Type="Self.DepartStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="ID_Staff" />
+            </Principal>
+            <Dependent Role="DepartStaff">
+              <PropertyRef Name="ID_Staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GuestRoom__ID_Gu__440B1D61">
+          <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
+          <End Role="GuestRoom" Type="Self.GuestRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guest">
+              <PropertyRef Name="ID_Guest" />
+            </Principal>
+            <Dependent Role="GuestRoom">
+              <PropertyRef Name="ID_Guest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GuestRoom__ID_Ro__4316F928">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="GuestRoom" Type="Self.GuestRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="ID_Room" />
+            </Principal>
+            <Dependent Role="GuestRoom">
+              <PropertyRef Name="ID_Room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Room__ID_Corpus__3E52440B">
+          <End Role="Corpus" Type="Self.Corpus" Multiplicity="1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Corpus">
+              <PropertyRef Name="ID_Corpus" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="ID_Corpus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Staff__ID_Post__48CFD27E">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID_Post" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="ID_Post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ApplicationOmegaModelContainer">
+          <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Corpus" EntityType="Self.Corpus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DepartStaff" EntityType="Self.DepartStaff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Guest" EntityType="Self.Guest" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GuestRoom" EntityType="Self.GuestRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Quarter" EntityType="Self.Quarter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Room" EntityType="Self.Room" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StatusApp" EntityType="Self.StatusApp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StreetCorpus" EntityType="Self.StreetCorpus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Applicati__ID_De__5441852A" Association="Self.FK__Applicati__ID_De__5441852A">
+            <End Role="DepartStaff" EntitySet="DepartStaff" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Applicati__ID_Gu__534D60F1" Association="Self.FK__Applicati__ID_Gu__534D60F1">
+            <End Role="GuestRoom" EntitySet="GuestRoom" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Applicati__ID_St__5535A963" Association="Self.FK__Applicati__ID_St__5535A963">
+            <End Role="StatusApp" EntitySet="StatusApp" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Corpus__ID_Quart__3A81B327" Association="Self.FK__Corpus__ID_Quart__3A81B327">
+            <End Role="Quarter" EntitySet="Quarter" />
+            <End Role="Corpus" EntitySet="Corpus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Corpus__ID_Stree__3B75D760" Association="Self.FK__Corpus__ID_Stree__3B75D760">
+            <End Role="StreetCorpus" EntitySet="StreetCorpus" />
+            <End Role="Corpus" EntitySet="Corpus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DepartSta__ID_De__4D94879B" Association="Self.FK__DepartSta__ID_De__4D94879B">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="DepartStaff" EntitySet="DepartStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DepartSta__ID_St__4E88ABD4" Association="Self.FK__DepartSta__ID_St__4E88ABD4">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="DepartStaff" EntitySet="DepartStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GuestRoom__ID_Gu__440B1D61" Association="Self.FK__GuestRoom__ID_Gu__440B1D61">
+            <End Role="Guest" EntitySet="Guest" />
+            <End Role="GuestRoom" EntitySet="GuestRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GuestRoom__ID_Ro__4316F928" Association="Self.FK__GuestRoom__ID_Ro__4316F928">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="GuestRoom" EntitySet="GuestRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Room__ID_Corpus__3E52440B" Association="Self.FK__Room__ID_Corpus__3E52440B">
+            <End Role="Corpus" EntitySet="Corpus" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Staff__ID_Post__48CFD27E" Association="Self.FK__Staff__ID_Post__48CFD27E">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ApplicationOmegaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="ID_Application" />
+          </Key>
+          <Property Name="ID_Application" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Theme" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_GuestRoom" Type="Int32" Nullable="false" />
+          <Property Name="ID_DepartStaff" Type="Int32" />
+          <Property Name="ID_Status" Type="Int32" Nullable="false" />
+          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateEnding" Type="DateTime" Precision="3" />
+          <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DepartStaff" Relationship="Self.FK__Applicati__ID_De__5441852A" FromRole="Applications" ToRole="DepartStaff" />
+          <NavigationProperty Name="GuestRoom" Relationship="Self.FK__Applicati__ID_Gu__534D60F1" FromRole="Applications" ToRole="GuestRoom" />
+          <NavigationProperty Name="StatusApp" Relationship="Self.FK__Applicati__ID_St__5535A963" FromRole="Applications" ToRole="StatusApp" />
+        </EntityType>
+        <EntityType Name="Corpus">
+          <Key>
+            <PropertyRef Name="ID_Corpus" />
+          </Key>
+          <Property Name="ID_Corpus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Quarter" Type="Int32" Nullable="false" />
+          <Property Name="CorpusNum" Type="Int32" Nullable="false" />
+          <Property Name="ID_StreetCorpus" Type="Int32" Nullable="false" />
+          <Property Name="StreetNum" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Quarter" Relationship="Self.FK__Corpus__ID_Quart__3A81B327" FromRole="Corpus" ToRole="Quarter" />
+          <NavigationProperty Name="StreetCorpus" Relationship="Self.FK__Corpus__ID_Stree__3B75D760" FromRole="Corpus" ToRole="StreetCorpus" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__Room__ID_Corpus__3E52440B" FromRole="Corpus" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="ID_Depart" />
+          </Key>
+          <Property Name="ID_Depart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="DepartStaff" Relationship="Self.FK__DepartSta__ID_De__4D94879B" FromRole="Department" ToRole="DepartStaff" />
+        </EntityType>
+        <EntityType Name="DepartStaff">
+          <Key>
+            <PropertyRef Name="ID_DepartStaff" />
+          </Key>
+          <Property Name="ID_DepartStaff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Depart" Type="Int32" Nullable="false" />
+          <Property Name="ID_Staff" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK__Applicati__ID_De__5441852A" FromRole="DepartStaff" ToRole="Applications" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__DepartSta__ID_De__4D94879B" FromRole="DepartStaff" ToRole="Department" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK__DepartSta__ID_St__4E88ABD4" FromRole="DepartStaff" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Guest">
+          <Key>
+            <PropertyRef Name="ID_Guest" />
+          </Key>
+          <Property Name="ID_Guest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="Telephone" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GuestRoom" Relationship="Self.FK__GuestRoom__ID_Gu__440B1D61" FromRole="Guest" ToRole="GuestRoom" />
+        </EntityType>
+        <EntityType Name="GuestRoom">
+          <Key>
+            <PropertyRef Name="ID_GuestRoom" />
+          </Key>
+          <Property Name="ID_GuestRoom" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Room" Type="Int32" Nullable="false" />
+          <Property Name="ID_Guest" Type="Int32" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK__Applicati__ID_Gu__534D60F1" FromRole="GuestRoom" ToRole="Applications" />
+          <NavigationProperty Name="Guest" Relationship="Self.FK__GuestRoom__ID_Gu__440B1D61" FromRole="GuestRoom" ToRole="Guest" />
+          <NavigationProperty Name="Room" Relationship="Self.FK__GuestRoom__ID_Ro__4316F928" FromRole="GuestRoom" ToRole="Room" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="ID_Post" />
+          </Key>
+          <Property Name="ID_Post" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK__Staff__ID_Post__48CFD27E" FromRole="Post" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Quarter">
+          <Key>
+            <PropertyRef Name="ID_Quarter" />
+          </Key>
+          <Property Name="ID_Quarter" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuarterName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Corpus" Relationship="Self.FK__Corpus__ID_Quart__3A81B327" FromRole="Quarter" ToRole="Corpus" />
+        </EntityType>
+        <EntityType Name="Room">
+          <Key>
+            <PropertyRef Name="ID_Room" />
+          </Key>
+          <Property Name="ID_Room" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Corpus" Type="Int32" Nullable="false" />
+          <Property Name="RoomNum" Type="Int32" Nullable="false" />
+          <Property Name="Entrance" Type="Int32" Nullable="false" />
+          <Property Name="Floor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Corpus" Relationship="Self.FK__Room__ID_Corpus__3E52440B" FromRole="Room" ToRole="Corpus" />
+          <NavigationProperty Name="GuestRoom" Relationship="Self.FK__GuestRoom__ID_Ro__4316F928" FromRole="Room" ToRole="GuestRoom" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="ID_Staff" />
+          </Key>
+          <Property Name="ID_Staff" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LastName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="75" FixedLength="false" Unicode="false" />
+          <Property Name="ID_Post" Type="Int32" />
+          <Property Name="NameUser" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Passwordss" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <NavigationProperty Name="DepartStaff" Relationship="Self.FK__DepartSta__ID_St__4E88ABD4" FromRole="Staff" ToRole="DepartStaff" />
+          <NavigationProperty Name="Post" Relationship="Self.FK__Staff__ID_Post__48CFD27E" FromRole="Staff" ToRole="Post" />
+        </EntityType>
+        <EntityType Name="StatusApp">
+          <Key>
+            <PropertyRef Name="ID_Status" />
+          </Key>
+          <Property Name="ID_Status" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Applications" Relationship="Self.FK__Applicati__ID_St__5535A963" FromRole="StatusApp" ToRole="Applications" />
+        </EntityType>
+        <EntityType Name="StreetCorpus">
+          <Key>
+            <PropertyRef Name="ID_StreetCorpus" />
+          </Key>
+          <Property Name="ID_StreetCorpus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StreetName" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Corpus" Relationship="Self.FK__Corpus__ID_Stree__3B75D760" FromRole="StreetCorpus" ToRole="Corpus" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="ID_User" />
+          </Key>
+          <Property Name="ID_User" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Passwords" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Applicati__ID_De__5441852A">
+          <End Role="DepartStaff" Type="Self.DepartStaff" Multiplicity="0..1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DepartStaff">
+              <PropertyRef Name="ID_DepartStaff" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="ID_DepartStaff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Applicati__ID_Gu__534D60F1">
+          <End Role="GuestRoom" Type="Self.GuestRoom" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GuestRoom">
+              <PropertyRef Name="ID_GuestRoom" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="ID_GuestRoom" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Applicati__ID_St__5535A963">
+          <End Role="StatusApp" Type="Self.StatusApp" Multiplicity="1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StatusApp">
+              <PropertyRef Name="ID_Status" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="ID_Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Corpus__ID_Quart__3A81B327">
+          <End Role="Quarter" Type="Self.Quarter" Multiplicity="1" />
+          <End Role="Corpus" Type="Self.Corpus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quarter">
+              <PropertyRef Name="ID_Quarter" />
+            </Principal>
+            <Dependent Role="Corpus">
+              <PropertyRef Name="ID_Quarter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Corpus__ID_Stree__3B75D760">
+          <End Role="StreetCorpus" Type="Self.StreetCorpus" Multiplicity="1" />
+          <End Role="Corpus" Type="Self.Corpus" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StreetCorpus">
+              <PropertyRef Name="ID_StreetCorpus" />
+            </Principal>
+            <Dependent Role="Corpus">
+              <PropertyRef Name="ID_StreetCorpus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Room__ID_Corpus__3E52440B">
+          <End Role="Corpus" Type="Self.Corpus" Multiplicity="1" />
+          <End Role="Room" Type="Self.Room" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Corpus">
+              <PropertyRef Name="ID_Corpus" />
+            </Principal>
+            <Dependent Role="Room">
+              <PropertyRef Name="ID_Corpus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DepartSta__ID_De__4D94879B">
+          <End Role="Department" Type="Self.Department" Multiplicity="1" />
+          <End Role="DepartStaff" Type="Self.DepartStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="ID_Depart" />
+            </Principal>
+            <Dependent Role="DepartStaff">
+              <PropertyRef Name="ID_Depart" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DepartSta__ID_St__4E88ABD4">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="1" />
+          <End Role="DepartStaff" Type="Self.DepartStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="ID_Staff" />
+            </Principal>
+            <Dependent Role="DepartStaff">
+              <PropertyRef Name="ID_Staff" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GuestRoom__ID_Gu__440B1D61">
+          <End Role="Guest" Type="Self.Guest" Multiplicity="0..1" />
+          <End Role="GuestRoom" Type="Self.GuestRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Guest">
+              <PropertyRef Name="ID_Guest" />
+            </Principal>
+            <Dependent Role="GuestRoom">
+              <PropertyRef Name="ID_Guest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__GuestRoom__ID_Ro__4316F928">
+          <End Role="Room" Type="Self.Room" Multiplicity="1" />
+          <End Role="GuestRoom" Type="Self.GuestRoom" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Room">
+              <PropertyRef Name="ID_Room" />
+            </Principal>
+            <Dependent Role="GuestRoom">
+              <PropertyRef Name="ID_Room" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Staff__ID_Post__48CFD27E">
+          <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="ID_Post" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="ID_Post" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AppOmegaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Applications" EntityType="Self.Applications" />
+          <EntitySet Name="Corpus" EntityType="Self.Corpus" />
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="DepartStaff" EntityType="Self.DepartStaff" />
+          <EntitySet Name="Guest" EntityType="Self.Guest" />
+          <EntitySet Name="GuestRoom" EntityType="Self.GuestRoom" />
+          <EntitySet Name="Post" EntityType="Self.Post" />
+          <EntitySet Name="Quarter" EntityType="Self.Quarter" />
+          <EntitySet Name="Room" EntityType="Self.Room" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="StatusApp" EntityType="Self.StatusApp" />
+          <EntitySet Name="StreetCorpus" EntityType="Self.StreetCorpus" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK__Applicati__ID_De__5441852A" Association="Self.FK__Applicati__ID_De__5441852A">
+            <End Role="DepartStaff" EntitySet="DepartStaff" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Applicati__ID_Gu__534D60F1" Association="Self.FK__Applicati__ID_Gu__534D60F1">
+            <End Role="GuestRoom" EntitySet="GuestRoom" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Applicati__ID_St__5535A963" Association="Self.FK__Applicati__ID_St__5535A963">
+            <End Role="StatusApp" EntitySet="StatusApp" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Corpus__ID_Quart__3A81B327" Association="Self.FK__Corpus__ID_Quart__3A81B327">
+            <End Role="Quarter" EntitySet="Quarter" />
+            <End Role="Corpus" EntitySet="Corpus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Corpus__ID_Stree__3B75D760" Association="Self.FK__Corpus__ID_Stree__3B75D760">
+            <End Role="StreetCorpus" EntitySet="StreetCorpus" />
+            <End Role="Corpus" EntitySet="Corpus" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Room__ID_Corpus__3E52440B" Association="Self.FK__Room__ID_Corpus__3E52440B">
+            <End Role="Corpus" EntitySet="Corpus" />
+            <End Role="Room" EntitySet="Room" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DepartSta__ID_De__4D94879B" Association="Self.FK__DepartSta__ID_De__4D94879B">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="DepartStaff" EntitySet="DepartStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DepartSta__ID_St__4E88ABD4" Association="Self.FK__DepartSta__ID_St__4E88ABD4">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="DepartStaff" EntitySet="DepartStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GuestRoom__ID_Gu__440B1D61" Association="Self.FK__GuestRoom__ID_Gu__440B1D61">
+            <End Role="Guest" EntitySet="Guest" />
+            <End Role="GuestRoom" EntitySet="GuestRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__GuestRoom__ID_Ro__4316F928" Association="Self.FK__GuestRoom__ID_Ro__4316F928">
+            <End Role="Room" EntitySet="Room" />
+            <End Role="GuestRoom" EntitySet="GuestRoom" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Staff__ID_Post__48CFD27E" Association="Self.FK__Staff__ID_Post__48CFD27E">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ApplicationOmegaModelContainer" CdmEntityContainer="AppOmegaEntities">
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.Applications">
+              <MappingFragment StoreEntitySet="Applications">
+                <ScalarProperty Name="ID_Application" ColumnName="ID_Application" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="ID_GuestRoom" ColumnName="ID_GuestRoom" />
+                <ScalarProperty Name="ID_DepartStaff" ColumnName="ID_DepartStaff" />
+                <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
+                <ScalarProperty Name="DateStart" ColumnName="DateStart" />
+                <ScalarProperty Name="DateEnding" ColumnName="DateEnding" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Corpus">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.Corpus">
+              <MappingFragment StoreEntitySet="Corpus">
+                <ScalarProperty Name="ID_Corpus" ColumnName="ID_Corpus" />
+                <ScalarProperty Name="ID_Quarter" ColumnName="ID_Quarter" />
+                <ScalarProperty Name="CorpusNum" ColumnName="CorpusNum" />
+                <ScalarProperty Name="ID_StreetCorpus" ColumnName="ID_StreetCorpus" />
+                <ScalarProperty Name="StreetNum" ColumnName="StreetNum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="ID_Depart" ColumnName="ID_Depart" />
+                <ScalarProperty Name="DepartName" ColumnName="DepartName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DepartStaff">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.DepartStaff">
+              <MappingFragment StoreEntitySet="DepartStaff">
+                <ScalarProperty Name="ID_DepartStaff" ColumnName="ID_DepartStaff" />
+                <ScalarProperty Name="ID_Depart" ColumnName="ID_Depart" />
+                <ScalarProperty Name="ID_Staff" ColumnName="ID_Staff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Guest">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.Guest">
+              <MappingFragment StoreEntitySet="Guest">
+                <ScalarProperty Name="ID_Guest" ColumnName="ID_Guest" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GuestRoom">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.GuestRoom">
+              <MappingFragment StoreEntitySet="GuestRoom">
+                <ScalarProperty Name="ID_GuestRoom" ColumnName="ID_GuestRoom" />
+                <ScalarProperty Name="ID_Room" ColumnName="ID_Room" />
+                <ScalarProperty Name="ID_Guest" ColumnName="ID_Guest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Post">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+                <ScalarProperty Name="PostName" ColumnName="PostName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Quarter">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.Quarter">
+              <MappingFragment StoreEntitySet="Quarter">
+                <ScalarProperty Name="ID_Quarter" ColumnName="ID_Quarter" />
+                <ScalarProperty Name="QuarterName" ColumnName="QuarterName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Room">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.Room">
+              <MappingFragment StoreEntitySet="Room">
+                <ScalarProperty Name="ID_Room" ColumnName="ID_Room" />
+                <ScalarProperty Name="ID_Corpus" ColumnName="ID_Corpus" />
+                <ScalarProperty Name="RoomNum" ColumnName="RoomNum" />
+                <ScalarProperty Name="Entrance" ColumnName="Entrance" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="ID_Staff" ColumnName="ID_Staff" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ID_Post" ColumnName="ID_Post" />
+                <ScalarProperty Name="NameUser" ColumnName="NameUser" />
+                <ScalarProperty Name="Passwordss" ColumnName="Passwordss" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StatusApp">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.StatusApp">
+              <MappingFragment StoreEntitySet="StatusApp">
+                <ScalarProperty Name="ID_Status" ColumnName="ID_Status" />
+                <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StreetCorpus">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.StreetCorpus">
+              <MappingFragment StoreEntitySet="StreetCorpus">
+                <ScalarProperty Name="ID_StreetCorpus" ColumnName="ID_StreetCorpus" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ApplicationOmegaModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID_User" ColumnName="ID_User" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Passwords" ColumnName="Passwords" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

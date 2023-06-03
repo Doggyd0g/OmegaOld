@@ -1,0 +1,29 @@
+﻿<Window x:Class="OmegaApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OmegaApp"
+        mc:Ignorable="d"
+        Title="Заявки" Height="600" Width="1100"
+        MinHeight="500" MinWidth="970" ResizeMode="NoResize" >
+    <Grid >
+        <TabControl Name="TabCtrl" TabStripPlacement="Top">
+            <TabItem  Header="Заявки" >
+                <Frame Name="ApplicFrame" />
+            </TabItem> 
+            <!--<TabItem Header="Заявки1">
+                <Frame Name="Test"></Frame>
+            </TabItem>
+            <TabItem Header="Test2">
+                <Frame Name="Test2"></Frame>
+            </TabItem> -->
+            <TabItem Header="Карта">
+                <Frame Name="MapFrame"/>
+            </TabItem>
+            <TabItem Header="Сотрудники" Name="stFr"  >
+                <Frame Name="StaffFrame" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
